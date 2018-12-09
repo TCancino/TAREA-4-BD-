@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}
+    Este es el menu del usuario
+{% endblock %}
+{% block content %}
+   <center><h1>{{ user.apodo }} </h1>
+    <form method="get" action="{{ url_for('user_menu') }}">
+
+    <h3>Nacionalidad: {{ user.nativo }}<h3><br>
+    <h3>Contacto: {{ user.contacto }}<h3><br>
+    <h3>Num Cuenta: {{ user.id_c }}<h3><br>
+    <h3>Cant compras: {{ user.compras }}<h3><br>
+    <h3>Cant ventas: {{ user.ventas }}<h3><br>
+
+    <input type="button" value="Estado cuenta" onclick="location.href='http://localhost:3000/est_cta'"><br>
+    <input type="button" value="Comprar objeto" onclick="location.href='http://localhost:3000/menu_compra'"><br>
+    <input type="button" value="Vender objeto" onclick="location.href='http://localhost:3000/menu_venta'"><br>
+    </form></center>
+{% endblock %}
