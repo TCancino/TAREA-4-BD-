@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}
+    Mostrar archivos 
+{% endblock %}
+{% block content %}
+<body>
+		<style>
+				html {
+					background: #0b0b0b url(/static/img/6.jpg) fixed no-repeat;
+					background-size: 1px 30px;
+					 background-size: 100% 100%;
+				} 
+			</style>
+<center>
+<form method="get" action="search">
+</form> 
+	<h1>Cuenta del usuario  dsflsf {{user.apodo}}</h1>
+	<li>{{user.nativo}} - {{user.contacto}} - {{user.ventas}} - {{user.compras}}
+	<p><input type="button" value="Volver" onclick="location.href='http://localhost:3000'"></p>
+</center>
+</body>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}
+    Informacion usuario {{ user.apodo }}
+{% endblock %}
+{% block content %}
+<style>
+        html {
+            background: #0b0b0b url(/static/img/5.jpg) fixed no-repeat;
+            background-size: 1px 30px;
+             background-size: 100% 100%;
+        } 
+    </style>
+  <table width="400"  align="center" cellspacing="2" cellpadding="3" border="10" bgcolor="#1E679A"> 
+      <tr> 
+         <td><font color="#FFFFFF" face="arial, verdana, helvetica">
+            {% if logeado == true %}
+            Te has Logeado correctamente {{ user.apodo }}!
+            {% endif %} 
+            <center><h1>Cuenta de {{ user.apodo }} </h1> 
+
+        
+        
+              <p>Nativo: {{ user.nativo }}<br/>
+              Contacto: {{user.contacto}}<br/>
+              Nro ventas: {{ user.ventas }}<br/>
+              Nro.compras: {{ user.compras }}<br/>
+              ID cuenta: {{ user.id_c }}<br/>
+              {% if logeado == true %}
+              Contraseña: {{ user.password }}
+              {% endif %} <p>
+              <h5>Objetos del usuario: </h5>
+              {% for obj in object %}
+              <p> nombre: {{ obj.nombre }} - codigo {{ obj.codigo }} - legalidad {{ obj.legalidad }} - precio {{ obj.precio }} </br> </p>
+              {% endfor %}
+        
+        
+              {% if logeado == true %}
+              <form method="get" action="{{ url_for('addobject') }}">
+                <h5>Opciones de cuenta: </h1>
+                <input name="agregarobjeto" type="button" value="Añadir objeto" onclick="location.href='http://localhost:3000/addobject'">
+              </form>
+              {% endif %} <p>
+                </center>
+         </font></td> 
+      </tr> 
+
+      
+    
+{% endblock %}

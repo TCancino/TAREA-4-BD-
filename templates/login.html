@@ -3,16 +3,23 @@
         Buscar
 {% endblock %}
 {% block content %}
+<style>
+        html {
+            background: #0b0b0b url(/static/img/6.jpg) fixed no-repeat;
+            background-size: 1px 30px;
+             background-size: 100% 100%;
+        } 
+    </style>
 
-<center><h1>Buscar</h1>
+<center><h1 style="color:ghostwhite">ENTRAR</h1>
 <form method="post" action="{{ url_for('login') }}">
-
-    <p>Ingrese su apodo</p>
+    <h2
+    <p style="color:ghostwhite;">Ingrese su apodo</p>
     <p><input name="username" type="text"> </p>
     </br>
     <p>Ingrese su contraseña</p>
     <p><input name="password" type="password"></p>
-    <input type="submit" value="Registrar">
+    <input type="submit" value="Acceder">
     <input type="button" value="Volver" onclick="location.href='http://localhost:3000'">
 </form>
 </center>
