@@ -12,16 +12,15 @@
     </style>
     <body>
    <center><font color="#color:hsla(0,100%,50%,1)"><h1>DeepDataBase</h1></font>
-    <form method="get" action="{{ url_for('search') }}">
-
-    <p><input type="text" name="nickname"></p>
-    <input type="submit" value="Buscar" >
-    <input type="button" value="Agregar" onclick="location.href='http://localhost:3000/signup'">
-    <input type="button" value="Buscar" onclick="location.href='http://localhost:3000/login'">
-    </form></center>
+    <input type="button" name="sectors" value="Sectores" onclick="location.href='http://localhost:3000/lugares'">
+    <input type="button" name="users" value="usuarios" onclick="location.href='http://localhost:3000/usuarios'">
+    <input type="button" name="objects" value="objetos" onclick="location.href='http://localhost:3000/objetos'">
+    </br>
+    <input type="button" value="Registrar" onclick="location.href='http://localhost:3000/signup'">
+    <input type="button" value="Acceder" onclick="location.href='http://localhost:3000/login'">
     <font color="#color:white">
     <h3> ¿QUÉ ES DEEP DATA BASE?</h3> 
-   
+   </center>
 <h4>Deep Data Base es un página web de nuestra red clandestina,<br>
      en la cual podras vender, comprar y buscar <br>
      todo tipo de articulos sin importar su procedencia o legalidad.</h4>
@@ -29,3 +28,4 @@
 </body>
 
 {% endblock %}
+
