@@ -1,11 +1,10 @@
-from flask import Flask,redirect
+from flask import Flask
 from flask import render_template
 from flask import request
 from flask_sqlalchemy import SQLAlchemy
 #importo una biblioteca para los passwords y la seguridad
 from werkzeug.security import  generate_password_hash
 from werkzeug.security import check_password_hash
-
 
 import os
 
@@ -25,7 +24,6 @@ class personas(db.Model):
     contacto = db.Column(db.Integer, nullable=False)
     ventas = db.Column(db.Integer, nullable=True)
     compras = db.Column(db.Integer, nullable=False)
-    id_c = db.Column(db.Integer,db.ForeignKey('cuenta.id'))
 
 class cuenta(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -33,20 +31,17 @@ class cuenta(db.Model):
     gastado = db.Column(db.Integer, nullable=False)
     saldo = db.Column(db.String(255), nullable=False)
 
-
 class objeto(db.Model):
     nombre = db.Column(db.String(126), primary_key=True)
     legalidad = db.Column(db.Boolean, nullable=False)
     codigo = db.Column(db.Integer, nullable=False)
     precio = db.Column(db.Integer, nullable=False)
     duenos = db.Column(db.Integer, nullable=False)
-    dueno_act = db.Column(db.String(50),db.ForeignKey('personas.apodo'))
 
 class policia(db.Model):
     placa = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(126), nullable=False)
     soborno = db.Column(db.Date, nullable=False)
-    num_s= db.Column(db.Integer,db.ForeignKey('sector.numero'))
 
 class sector(db.Model):
     numero = db.Column(db.Integer, primary_key=True)
@@ -57,18 +52,13 @@ class sector(db.Model):
 def index():
     return render_template("index.html")
 
-@app.route("/base")
-def base():
-    myUser = personas.query.all()
-    return render_template('/base.html', myUser=myUser)
 
 @app.route("/search")
 def search():
     nombre = request.args.get("nickname")
     user = personas.query.filter_by(apodo=nombre).first()
     if user:
-        return render_template("cuenta.html", nombre=nombre)
-        
+        return render_template("cuenta.html", nombre = nombre)
 
     else:
         return "El usuario no existe"
@@ -83,8 +73,7 @@ def signup():
         db.session.add(new_user)
         #nos confirma cadad uno de los cambios
         db.session.commit()
-        #return "ya te has registrado exitosamente "
-        return redirect("http://localhost:3000")
+        return "ya te has registrado exitosamente "
     return  render_template("signup.html")
 
 @app.route("/login",methods=["GET","POST"])
