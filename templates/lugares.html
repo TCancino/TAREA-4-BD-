@@ -3,6 +3,16 @@
         Lugares
 {% endblock %}
 {% block content %}
+<style>
+    html {
+        background: #0b0b0b url(/static/img/5.jpg) fixed no-repeat;
+        background-size: 1px 30px;
+         background-size: 100% 100%;
+    } 
+</style>
+<table width="400"  align="center" cellspacing="2" cellpadding="3" border="10" bgcolor="#1E679A"> 
+  <tr> 
+     <td><font color="#FFFFFF" face="arial, verdana, helvetica">
 <center><h1>Sector</h1>
     {% for lugar in place %}
     <p> ID: {{ lugar.numero }} - Ubicacion: {{ lugar.ubicacion }} </br> </p>
@@ -17,4 +27,6 @@
       <br>
 
 </center>
+</font></td> 
+</tr>  
 {% endblock %}

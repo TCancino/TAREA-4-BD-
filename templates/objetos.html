@@ -3,6 +3,16 @@
         Objetos
 {% endblock %}
 {% block content %}
+<style>
+  html {
+      background: #0b0b0b url(/static/img/5.jpg) fixed no-repeat;
+      background-size: 1px 30px;
+       background-size: 100% 100%;
+  } 
+</style>
+<table width="400"  align="center" cellspacing="2" cellpadding="3" border="10" bgcolor="#1E679A"> 
+<tr> 
+   <td><font color="#FFFFFF" face="arial, verdana, helvetica">
 <center><h1>Objetos</h1>
 
   {% for obj in object %}
@@ -25,7 +35,7 @@
 
       <p><input type="submit" value="Añadir">
       <input type="button" value="Salir"onclick="location.href='http://localhost:3000'" ></p>
-  </form></center>
-
-</center>
+    </center>
+  </font></td> 
+</tr>  
 {% endblock %}
