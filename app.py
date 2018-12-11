@@ -5,6 +5,7 @@ from flask import jsonify
 from flask import make_response
 from flask import session
 from sqlalchemy import func
+from flask import redirect
 import datetime
 from flask_sqlalchemy import SQLAlchemy
 from flask_security import Security, SQLAlchemyUserDatastore, \
@@ -153,17 +154,7 @@ def search():
     else:
         return "El usuario no existe"
 
-@app.route("/searchplaces", methods=["POST","GET"])
-def searchplaces():
-    if request.method == "GET":
-        numero = request.args.get("Buscar_sec")
-        place = sector.query.filter_by(numero=numero).first()
-        police = policia.query.filter_by(num_s=numero).all()
-        if place:
-            return render_template("sector.html", place = place, police=police)
 
-        else:
-            return "El sector no existe"
 
 
 
@@ -202,8 +193,31 @@ def profile(apodo):
     user = personas.query.filter_by(apodo=apodo).first()
     return render_template('profile.html', user=user)
 
+@app.route("/searchplaces", methods=["POST","GET"])
+def searchplaces():
+    if request.method == "GET":
+        numero = request.args.get("Buscar_sec")
+        place = sector.query.filter_by(numero=numero).first()
+        police = policia.query.filter_by(num_s=numero).all()
+        if place:
+            return render_template("sector.html", place = place, police=police)
+
+        else:
+            return "El sector no existe"
 
 
+
+@app.route('/eliminarP', methods = ['GET', 'POST'])
+def deleted():
+            nick = request.form["apodo"]
+            x = Students.query.filter_by(id='nick')
+            db.session.delete(x)
+            db.session.commit()
+           
+         
+            
+
+    
 
 if __name__ == '__main__':
     db.create_all()
